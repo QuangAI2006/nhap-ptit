@@ -29,20 +29,6 @@ void testCase() {
     s.resize(n);
     Try(0);
 }
-
-int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL); cout.tie(NULL);
-
-    int T = 1;
-    while (T--) {
-        testCase();
-        cout << "\n";
-    }
-    return 0;
-}
-*/
-/*
 // LỌC DỮ LIỆU TRÙNG TRONG DSLK ĐƠN
 void testCase() {
     int n; cin >> n;
@@ -58,16 +44,17 @@ void testCase() {
         }
     }
 }
-
-int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL); cout.tie(NULL);
-
-    int T = 1;
-    while (T--) {
-        testCase();
-        cout << "\n";
+// XÂU NHỊ PHÂN KẾ TIẾP
+void testCase() {
+    string s; cin >> s;
+    for (int i = s.length() - 1; i >= 0; --i) {
+        if (s[i] == '1') s[i] = '0';
+        else {
+            s[i] = '1';
+            break;
+        }
     }
-    return 0;
+    cout << s;
 }
+
     */
