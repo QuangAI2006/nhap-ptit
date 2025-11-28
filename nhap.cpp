@@ -1,7 +1,8 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-/* THUẬT TOÁN SINH XÂU NHỊ PHÂN THUẬN NGHỊCH
+/* 
+//THUẬT TOÁN SINH XÂU NHỊ PHÂN THUẬN NGHỊCH
 int n;
 string s;
 
@@ -30,6 +31,7 @@ void testCase() {
     Try(0);
 }
 // LỌC DỮ LIỆU TRÙNG TRONG DSLK ĐƠN
+
 void testCase() {
     int n; cin >> n;
     map<int, bool> mp;
@@ -56,5 +58,53 @@ void testCase() {
     }
     cout << s;
 }
+// Tập con kế tiếp 
+void testCase() {
+    int n, k;
+    cin >> n >> k;
+    vector<int> a(k + 1);
+    for (int i = 1; i <= k; ++i) {
+        cin >> a[i];
+    }
 
+    int i = k;
+    while (a[i] == n - k + i) i--;
+    if (i == 0) a[i] = 0;
+    else a[i]++;
+    
+    while (i < k) {
+        a[i + 1] = a[i] + 1;
+        i++;
+    }
+    for (int i = 1; i <= k; ++i) {
+        cout << a[i] << " ";
+    }
+}
+// Hoán vị kế tiếp  
+void testCase() {
+    int n; cin >> n;
+    vector<int> a(n + 1);
+    for (int i = 1; i <= n; ++i) {
+        cin >> a[i];
+    }
+
+    int i = n - 1;
+    while (i >= 1 && a[i] >= a[i + 1]) i--;
+    if (i == 0) {
+        for (int j = 1; j <= n; ++j) {
+            a[j] = j;
+        }
+    }
+    else {
+        for (int j = n; j > i; --j) {
+            if (a[j] > a[i]) {
+                swap(a[i], a[j]);
+                break;
+            }
+        }
+    }
+    for (int i = 1; i <= n; ++i) {
+        cout << a[i] << " ";
+    }
+}
     */
