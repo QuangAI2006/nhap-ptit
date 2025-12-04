@@ -1,5 +1,5 @@
 /*
-//THUẬT TOÁN SINH XÂU NHỊ PHÂN THUẬN NGHỊCH
+//THUAT TOAN SINH
 int n;
 string s;
 
@@ -27,8 +27,53 @@ void testCase() {
     s.resize(n);
     Try(0);
 }
-// LỌC DỮ LIỆU TRÙNG TRONG DSLK ĐƠN
+// TONG DAY CON BANG K
+int n, k, ans;
+vector<int> a, b;
 
+void solve() {
+    int sum = 0;
+    for (int i = 0; i < n; ++i) {
+        sum += a[i] * b[i];
+    }
+    if (sum == k) {
+        ans++;
+        for (int i = 0; i < n; ++i) {
+            if (b[i]) cout << a[i] << " ";
+        }
+        cout << endl;
+    }
+}
+
+void Try(int i) {
+    for (int j = 0; j <= 1; ++j) {
+        b[i] = j;
+        if (i == n - 1) solve();
+        else Try(i + 1);
+    }
+}
+
+void testCase() {
+    cin >> n >> k;
+    a.resize(n);
+    b.resize(n);
+    for (int &i : a) cin >> i;
+    Try(0);
+    cout << ans;
+}
+//XOA DU LIEU TRONG DSLK DON
+void testCase() {
+    int n; cin >> n;
+    int a[n];
+    for (int i = 0; i < n; ++i) {
+        cin >> a[i];
+    }
+    int x; cin >> x;
+    for (int i = 0; i < n; ++i) {
+        if (a[i] != x) cout << a[i] << " ";
+    }
+}
+// LOC DU LIEU TRONG DSLK DON
 void testCase() {
     int n; cin >> n;
     map<int, bool> mp;
@@ -43,7 +88,7 @@ void testCase() {
         }
     }
 }
-// XÂU NHỊ PHÂN KẾ TIẾP
+// XAU NHI PHAN KE TIEP
 void testCase() {
     string s; cin >> s;
     for (int i = s.length() - 1; i >= 0; --i) {
@@ -55,7 +100,7 @@ void testCase() {
     }
     cout << s;
 }
-// Tập con kế tiếp 
+// TAP CON KE TIEP
 void testCase() {
     int n, k;
     cin >> n >> k;
@@ -77,7 +122,7 @@ void testCase() {
         cout << a[i] << " ";
     }
 }
-// Hoán vị kế tiếp  
+// HOAN VI KE TIEP 
 void testCase() {
     int n; cin >> n;
     vector<int> a(n + 1);
@@ -104,7 +149,7 @@ void testCase() {
         cout << a[i] << " ";
     }
 }
- // Sinh tổ hợp 
+ // SINH TO HOP
  int n, k;
 vector<int> a;
 
@@ -130,7 +175,7 @@ void testCase() {
     Try(1);
 }
 
-// Sinh hoán vị
+// SINH HOAN VI
 int n;
 vector<int> a, b;
 
@@ -160,7 +205,7 @@ void testCase() {
     Try(1);
 }
 
-// Hoán vị ngược
+// HOAN VI NGUOC
 int n;
 vector<int> a, b;
 
@@ -189,7 +234,7 @@ void testCase() {
     b.resize(n + 1, 0);
     Try(1);
 }
-// Xâu AB có độ dài N 
+// XAU AB CO DO DAI N
 int n;
 string s;
 
@@ -206,7 +251,7 @@ void testCase() {
     s.resize(n);
     Try(0);
 }
-// Xâu nhị phân có K BIT 1 
+// XAU NHI PHAN CO K BIT 1
 int n, k;
 vector<int> a;
 
@@ -234,35 +279,7 @@ void testCase() {
     a.resize(n);
     Try(0);
 }
-// HAHAHA
-int n;
-string s;
-vector<string> res;
-
-void solve() {
-    if (s[0] == 'H' && s[n - 1] == 'A' && s.find("HH") == -1) {
-        res.push_back(s);
-    }
-}
-
-void Try(int i) {
-    for (int j = 0; j <= 1; ++j) {
-        if (j == 0) s[i] = 'H';
-        else s[i] = 'A';
-        if (i == n - 1) solve();
-        else Try(i + 1);
-    }
-}
-
-void testCase() {
-    cin >> n;
-    s.resize(n);
-    res.clear();
-    Try(0);
-    sort(res.begin(), res.end());
-    for (string i : res) cout << i << endl;
-}
-// Xâu nhị phân trước 
+// XAU NHI PHAN TRUOC 
 void testCase() {
     string s; cin >> s;
     int i = s.length() - 1;
@@ -272,7 +289,7 @@ void testCase() {
     if (i >= 0) s[i] = '0';
     cout << s;
 }
-// Tổ hợp tiếp theo 
+// TO HOP TIEP THEO
 void testCase() {
     int n, k;
     cin >> n >> k;
@@ -301,7 +318,7 @@ void testCase() {
     }
     cout << ans;
 }
-// Số thứ tự hoán vị 
+// SO THU TU HOAN VI
 int n, res;
 int a[10], u[10], temp[10];
 bool stop;
@@ -338,7 +355,7 @@ void testCase() {
     Try(1);
     cout << res;
 }
-// Số thứ tự tổ hợp 
+// SO THU TU TO HOP
 int n, k, res;
 int a[20], temp[20];
 bool stop;
@@ -370,105 +387,7 @@ void testCase() {
     Try(1);
     cout << res;
 }
-// Đặt tên -1
-int n, k;
-int a[30];
-vector<string> temp;
-vector<vector<string>> res;
-
-void solve() {
-    vector<string> x;
-    for (int i = 1; i <= k; ++i) {
-        x.push_back(temp[a[i]]);
-    }
-    sort(x.begin(), x.end());
-    res.push_back(x);
-}
-
-void Try(int i) {
-    for (int j = a[i - 1] + 1; j <= n - k + i; ++j) {
-        a[i] = j;
-        if (i == k) solve();
-        else Try(i + 1);
-    }
-}
-
-void testCase() {
-    cin >> n >> k;
-    map<string, bool> mp;
-    for (int i = 1; i <= n; ++i) {
-        string s; cin >> s;
-        mp[s] = true;
-    }
-    temp.push_back("");
-    for (auto i : mp) {
-        temp.push_back(i.first);
-    }
-    n = temp.size() - 1;
-    Try(1);
-    sort(res.begin(), res.end());
-    for (auto i : res) {
-        for (string j : i) {
-            cout << j << " ";
-        }
-        cout << endl;
-    }
-}
-// Đặt tên -2
-int n, k;
-vector<int> a;
-
-void solve() {
-    string s;
-    for (int i = 1; i <= k; ++i) {
-        s.push_back(a[i] + 'A' - 1);
-    }
-    cout << s << endl;
-}
-
-void Try(int i) {
-    for (int j = a[i - 1] + 1; j <= n - k + i; ++j) {
-        a[i] = j;
-        if (i == k) solve();
-        else Try(i + 1);
-    }
-}
-
-void testCase() {
-    cin >> n >> k;
-    a.resize(k + 1, 0);
-    Try(1);
-}
-// Phát lộc
-int n;
-string s;
-vector<string> res;
-
-void solve() {
-    if (s.front() == '8' && s.back() == '6' && s.find("88") == -1 && s.find("6666") == -1) {
-        res.push_back(s);
-    }
-}
-
-void Try(int i) {
-    for (int j = 0; j <= 1; ++j) {
-        if (j == 0) s[i] = '6';
-        else s[i] = '8';
-        if (i == n - 1) solve();
-        else Try( i + 1);
-    }
-}
-
-void testCase() {
-    cin >> n;
-    s.resize(n);
-    Try(0);
-    sort(res.begin(), res.end());
-    for (string i : res) {
-        cout << i << endl;
-    }
-}
-// Hoán vị dãy số 
+// HOAN VI DAY SO
 int n;
 vector<int> a, b, u;
 vector<vector<int>> res;
@@ -501,7 +420,7 @@ void testCase() {
         cout << endl;
     }
 }
-// Liệt kê tổ hợp 
+// LIET KE TOP HOP
 int n, k;
 vector<int> a, b;
 
@@ -536,78 +455,7 @@ void testCase() {
     }
     Try(1);
 }
-// Dãy số 1 
-int n;
-vector<int> a;
-vector<int> b;
-
-void print() {
-    cout << "[";
-    for (int i = 0; i < a.size(); ++i) {
-        cout << a[i];
-        if (i != a.size() - 1) cout << " ";
-    }
-    cout << "]" << endl;
-}
-
-void Try(int i) {
-    print();
-    if (i == 1) return;
-    for (int j = 0; j < i - 1; ++j) {
-        b.push_back(a[j] + a[j + 1]);
-    }
-    a = b;
-    a.resize(i - 1);
-    b.clear();
-    Try(i - 1);
-}
-
-void testCase() {
-    cin >> n;
-    a.resize(n);
-    for (int &i : a) cin >> i;
-    Try(n);
-}
-// Di chuyển trong mê cung 1
-int n, a[11][11];
-vector<string> v;
-
-void Try(int i, int j, string s) {
-    if (i == n && j == n) {
-        v.push_back(s);
-        return;
-    }
-    if (i < n && a[i + 1][j] == 1)
-        Try(i + 1, j, s + 'D');
-    if (j < n && a[i][j + 1] == 1)
-        Try(i, j + 1, s + 'R');
-}
-
-void TestCase() {
-    v.clear();
-    cin >> n;
-    for (int i = 1; i <= n; ++i) {
-        for (int j = 1; j <= n; ++j) {
-            cin >> a[i][j];
-        }
-    }
-    
-    if (a[1][1] == 0 || a[n][n] == 0) {
-        cout << "-1\n";
-        return;
-    }
-    Try(1, 1, "");
-
-    if (v.empty()) {
-        cout << "-1\n";
-        return;
-    }
-    sort(v.begin(), v.end());
-    for (auto x : v) {
-        cout << x << " ";
-    }
-}
-// Hoán vị xâu kí tự 
+// HOAN VI XAU KI TU
 int n;
 string a, b;
 vector<bool> vs;
@@ -632,7 +480,7 @@ void testCase() {
     vs.resize(n, false);
     Try(0);
 }
-// Dãy con tổng bằng k 
+// DAY CON TONG BANG K 
 int n, k;
 vector<int> a, b;
 bool hasAnswer;
@@ -671,33 +519,132 @@ void testCase() {
     Try(0);
     if (!hasAnswer) cout << -1;
 }
-// Di chuyển trong ma trận 
-int n, m, ans;
-int a[105][105];
-bool vs[105][105];
+//DAY CON TANG DAN
+int n;
+vector<int> a, b;
+vector<vector<int>> res;
 
-void Try(int i, int j) {
-    if (i == n && j == m) {
-        ans++;
-        return;
+void solve() {
+    if (b.size() < 2) return;
+    vector<int> c(b.begin(), b.end());
+    sort(c.begin(), c.end());
+    if (b == c) res.push_back(b);
+}
+
+void Try(int i) {
+    for (int j = 0; j <= 1; ++j) {
+        if (j == 1) b.push_back(a[i]);
+        if (i == n - 1) solve();
+        else Try(i + 1);
+        if (j == 1) b.pop_back();
     }
-    if (i + 1 <= n && !vs[i + 1][j])
-        Try(i + 1, j);
-    if (j + 1 <= m && !vs[i][j + 1])
-        Try(i, j + 1);
+}
+
+bool cmp(vector<int> a, vector<int> b) {
+    string x = "", y = "";
+    for (int i : a) x += to_string(i) + " ";
+    x.pop_back(); // remove the last space
+    for (int i : b) y += to_string(i) + " ";
+    y.pop_back();
+    return x < y;
 }
 
 void testCase() {
-    ans = 0;
-    cin >> n >> m;
-    memset(vs, false, sizeof(vs));
+    cin >> n;
+    a.resize(n);
+    for (int &i : a) cin >> i;
+    Try(0);
+    sort(res.begin(), res.end(), cmp);
+    for (auto i : res) {
+        for (int j : i) cout << j << " ";
+        cout << endl;
+    }
+}
+    //LIET KE XAU KY TU
+    char c;
+int k;
+string s;
+
+void Try(char i) {
+    for (char j = i; j <= c; ++j) {
+        s.push_back(j);
+        if (s.length() == k) cout << s << endl;
+        else Try(j);
+        s.pop_back();
+    }
+}
+
+void testCase() {
+    cin >> c >> k;
+    Try('A');
+}
+    //SO XA CACH
+    int n;
+vector<int> a;
+vector<bool> vs;
+
+void solve() {
+    for (int i = 1; i < n; ++i) {
+        if (abs(a[i] - a[i + 1]) == 1)
+            return;
+    }
     for (int i = 1; i <= n; ++i) {
-        for (int j = 1; j <= m; ++j) {
-            cin >> a[i][j];
+        cout << a[i];
+    }
+    cout << endl;
+}
+
+void Try(int i) {
+    for (int j = 1; j <= n; ++j) {
+        if (!vs[j]) {
+            vs[j] = true;
+            a[i] = j;
+            if (i == n) solve();
+            else Try(i + 1);
+            vs[j] = false;
         }
     }
-    Try(1, 1);
-    cout << ans;
+}
+
+void testCase() {
+    cin >> n;
+    a.resize(n + 1);
+    vs.resize(n + 1, false);
+    Try(1);
+}
+    // TRO CHOI VOI CAC CON SO 
+    int n;
+vector<int> a;
+vector<bool> vs;
+
+void solve() {
+    for (int i = 1; i < n; ++i) {
+        if (abs(a[i] - a[i + 1]) == 1)
+            return;
+    }
+    for (int i = 1; i <= n; ++i) {
+        cout << a[i];
+    }
+    cout << endl;
+}
+
+void Try(int i) {
+    for (int j = 1; j <= n; ++j) {
+        if (!vs[j]) {
+            vs[j] = true;
+            a[i] = j;
+            if (i == n) solve();
+            else Try(i + 1);
+            vs[j] = false;
+        }
+    }
+}
+
+void testCase() {
+    cin >> n;
+    a.resize(n + 1);
+    vs.resize(n + 1, false);
+    Try(1);
 }
 
     */
